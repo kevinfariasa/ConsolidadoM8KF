@@ -1,7 +1,7 @@
 {
   "name": "cursos_bootcamp",
   "version": "1.0.0",
-  "description": "Dado el siguiente modelo relacional:",
+  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {

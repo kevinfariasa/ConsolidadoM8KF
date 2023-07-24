@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "bcc57b09-bf5d-405c-8533-f502d1907396",
+		"name": "Consolidacion Sequelize Bootcamp-Usuarios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20969454"
+	},
+	"item": [
+		{
+			"name": "Users create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"Antonio\",\r\n    \"lastName\":\"Perez\",\r\n    \"email\":\"aperez@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/v1/user/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User findById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODk3MDIzMjcsImRhdGEiOnsiaWQiOjEsImZpcnN0TmFtZSI6Ik1hdGVvIiwibGFzdE5hbWUiOiJEw61heiIsImVtYWlsIjoibWF0ZW8uZGlhekBjb3JyZW8uY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNFBrLkliYWxoQlNaTW0xaS92UU16dU9iSVVNV3FSeEdobDlzUm1hWHRiSXppVU1hb3NtdHUifSwiaWF0IjoxNjg5Njk4NzI3fQ.MDvxgZVa5clVlpMFKCQY54coB1w1QS6SE0_oAgo2bk4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/v1/user/id/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"id",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User deleteById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJFbWlsaW8iLCJsYXN0TmFtZSI6IlBlcmV6IiwiZW1haWwiOiJlbWlwZXJlekBnbWFpbC5jb20ifSwiaWF0IjoxNjg5MDMzMzU1fQ.IMSyY0KFEdJDr0Y1a630b5Qzca2uPg6QAIJY_WtNPNY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/v1/user/id/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"id",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User updateById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJFbWlsaW8iLCJsYXN0TmFtZSI6IlBlcmV6IiwiZW1haWwiOiJlbWlwZXJlekBnbWFpbC5jb20ifSwiaWF0IjoxNjg5MDMzMzU1fQ.IMSyY0KFEdJDr0Y1a630b5Qzca2uPg6QAIJY_WtNPNY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"Pedro\",\r\n    \"lastName\": \"Sanchez\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/v1/user/id/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"id",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bootcamp findAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/bootcamp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"bootcamp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bootcamp create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJFbWlsaW8iLCJsYXN0TmFtZSI6IlBlcmV6IiwiZW1haWwiOiJlbWlwZXJlekBnbWFpbC5jb20ifSwiaWF0IjoxNjg5MDMzMzU1fQ.IMSyY0KFEdJDr0Y1a630b5Qzca2uPg6QAIJY_WtNPNY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Front End\",\r\n    \"cue\": 8,\r\n    \"description\": \"Bootcamp sobre Front End\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/v1/bootcamp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"bootcamp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bootcamp findById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODk3MDIzMjcsImRhdGEiOnsiaWQiOjEsImZpcnN0TmFtZSI6Ik1hdGVvIiwibGFzdE5hbWUiOiJEw61heiIsImVtYWlsIjoibWF0ZW8uZGlhekBjb3JyZW8uY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNFBrLkliYWxoQlNaTW0xaS92UU16dU9iSVVNV3FSeEdobDlzUm1hWHRiSXppVU1hb3NtdHUifSwiaWF0IjoxNjg5Njk4NzI3fQ.MDvxgZVa5clVlpMFKCQY54coB1w1QS6SE0_oAgo2bk4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/v1/bootcamp/id/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"bootcamp",
+						"id",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bootcamp addUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJFbWlsaW8iLCJsYXN0TmFtZSI6IlBlcmV6IiwiZW1haWwiOiJlbWlwZXJlekBnbWFpbC5jb20ifSwiaWF0IjoxNjg5MDMzMzU1fQ.IMSyY0KFEdJDr0Y1a630b5Qzca2uPg6QAIJY_WtNPNY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bootcampId\":1,\r\n    \"userId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/v1/bootcamp/addusers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"bootcamp",
+						"addusers"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"mateo.diaz@correo.com\",\r\n    \"password\":\"mateo123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/v1/user/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users Find all endpoint",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJFbWlsaW8iLCJsYXN0TmFtZSI6IlBlcmV6IiwiZW1haWwiOiJlbWlwZXJlekBnbWFpbC5jb20ifSwiaWF0IjoxNjg5MDMzMzU1fQ.IMSyY0KFEdJDr0Y1a630b5Qzca2uPg6QAIJY_WtNPNY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/v1/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

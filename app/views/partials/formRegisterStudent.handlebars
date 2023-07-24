@@ -1,0 +1,78 @@
+<div class='col-span-6 lg:col-start-4 lg:col-end-6 rounded-xl p-6'>
+				<div class='my-8  flex items-center'>
+					<img class='h-10 w-auto flex-initial' src='../../logo.png' alt='TuBootcamp' />
+					<h2
+						class='text-start flex-initial text-2xl uppercase italic font-medium leading-9 tracking-tight text-gray-800'>
+						Inscribir Estudiante a un Bootcamp</h2>
+				</div>
+				<form class='justify-end space-y-6 overflow-visible' id='registerStudent'>
+					<div>
+						<label for='estudiante'
+							class='block text-sm font-medium leading-6 text-gray-900'>Estudiante</label>
+						<div class='mt-2'>
+							<select id='selectEstudiante' name='estudiante' required
+								class='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'>
+								<option disabled selected>Elige un estudiante</option>
+								{{#each users}}
+									<option value="{{this.dataValues.id}}">{{this.dataValues.firstName}}
+										{{this.dataValues.lastName}}
+									</option>
+								{{/each}}
+							</select>
+						</div>
+					</div>
+					<div class="">
+						<label for='bootcamp' class='block text-sm font-medium leading-6 text-gray-900'>Bootcamp</label>
+						<div class='mt-2'>
+							<select id='selectBootcamp' name='bootcamp' required
+								class='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'>
+								<option disabled selected>Elige un bootcamp</option>
+								{{#each bootcamps}}
+									<option value="{{this.dataValues.id}}">{{this.dataValues.title}}
+									</option>
+								{{/each}}
+							</select>
+						</div>
+					</div>
+					<div class="">
+						<button type='submit'
+							class='w-full rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>Inscribir
+							Estudiante</button>
+					</div>
+
+				</form>
+			</div>
+
+<script>
+    const registerStudent = document.getElementById('registerStudent');	
+	registerStudent.addEventListener('submit',(event)=>{
+		event.preventDefault();
+		var myHeaders = new Headers();
+		myHeaders.append("Content-Type", "application/json");
+		myHeaders.append("Authorization", `Bearer ${token}`);
+
+		var raw = JSON.stringify({
+		"bootcampId": selectBootcamp.value,
+		"userId": selectEstudiante.value
+		});
+
+		var requestOptions = {
+		method: 'POST',
+		headers: myHeaders,
+		body: raw,
+		redirect: 'follow'
+		};
+
+		fetch("http://localhost:3001/api/v1/bootcamp/adduser", requestOptions)
+		.then(response => response.json())
+		.then(result => {
+			if(result.code==200){
+				alert(result.message);
+				location.reload();
+			} else {
+				alert(result.message)
+			}
+		})
+		.catch(error => console.log('error', error));
+	})
+</script>

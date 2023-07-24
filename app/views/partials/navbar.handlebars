@@ -1,0 +1,132 @@
+<nav class='px-3 flex-wrap h-[15vh]'>
+	<div class='container mx-auto flex items-center flex-wrap'>
+
+		<a href='/' class='mr-4 inline-flex items-center'>
+			<img src='../../tuBootcamp.png' alt='' width='250' />
+		</a>
+		<button
+			class='text-white inline-flex bg-gray-800 p-3 hover:bg-gray-800 rounded lg:hidden ml-auto hover:text-white outline-none nav-toggler'
+			data-target='#navigation'
+		>
+			<i class='material-icons'>Menu</i>
+		</button>
+		<div
+			class='hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto bg-gray-800 text-white lg:bg-transparent z-40'
+			id='navigation'
+		>
+			<div
+				class='lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto lg:text-gray-700 font-medium  '
+			>
+				<a
+					href='/'
+					class='lg:w-auto w-full px-3 py-2 rounded lg:text-gray-700 items-center justify-center hover:bg-gray-800 hover:text-white'
+				>
+					<span>Inicio</span>
+				</a>
+				<a
+					href='/bootcamp'
+					class='lg:w-auto w-full px-3 py-2 rounded lg:text-gray-700 items-center justify-center hover:bg-gray-800 hover:text-white'
+				>
+					<span>Bootcamps</span>
+				</a>
+				<a
+					href='' id="linkEstudiantes"
+					class='lg:w-auto w-full px-3 py-2 rounded lg:text-gray-700 items-center justify-center hover:bg-gray-800 hover:text-white'
+				>
+					<span>Estudiantes</span>
+				</a>
+				<a
+					href='' id="linkAdmin"
+					class='lg:w-auto w-full px-3 py-2 rounded lg:text-gray-700 items-center justify-center hover:bg-gray-800 hover:text-white'
+				>
+					<span>Administrar</span>
+				</a>
+				<a
+					href='/signup' id="linkSignup"
+					class='lg:w-auto w-full px-3 py-2 rounded lg:text-gray-700 items-center justify-center hover:bg-gray-800 hover:text-white'
+				>
+					<span>Registrarse</span>
+				</a>
+				<a
+					href='' id="linkPerfil"
+					class='lg:w-auto w-full px-3 py-2 rounded lg:text-gray-700 items-center justify-center hover:bg-gray-800 hover:text-white'
+				>
+					<span>Perfil</span>
+				</a>
+				<a
+					href='/signin' id="linkLogin"
+					class=' lg:w-auto w-full px-3 py-2 rounded lg:text-gray-700 items-center justify-center hover:bg-gray-800 hover:text-white '
+				>
+					<span>Login</span>
+				</a>
+				<a
+					href='' id="linkLogout"
+					class='lg:w-auto w-full px-3 py-2 rounded lg:text-gray-700 items-center justify-center hover:bg-gray-800 hover:text-white'
+				>
+					<span>Logout</span>
+				</a>
+				
+			</div>
+		</div>
+	</div>
+</nav>
+
+<script
+	src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js'
+	integrity='sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ='
+	crossorigin='anonymous'
+></script>
+<script>
+	$(document).ready(function () {
+			$(".nav-toggler").each(function (_, navToggler) {
+				var target = $(navToggler).data("target"); $(navToggler).on("click",
+					function () { $(target).animate({ height: "toggle" }); });
+			});
+		});
+
+	let token = localStorage.getItem('token');
+	if(token){
+		linkLogin.classList.add('hidden')
+		linkSignup.classList.add('hidden')
+	} else {
+		linkLogout.classList.add('hidden');
+		linkEstudiantes.classList.add('hidden');
+		linkPerfil.classList.add('hidden')
+		linkAdmin.classList.add('hidden')
+	}
+
+	linkLogout.addEventListener('click', (event)=>{
+		event.preventDefault();
+		if(confirm('¿Seguro que desea cerrar sesión?')){
+			localStorage.removeItem('token');
+			alert('Ha cerrado sesión')
+			location.href='/'
+		}
+	})
+
+	linkEstudiantes.addEventListener('click', (event)=>{
+		event.preventDefault();
+		if(token){
+			location.href=`/user?token=${token}`
+		} else {
+			alert('Debes ingresar tus credenciales')
+		}
+	});
+
+	linkPerfil.addEventListener('click', (event)=>{
+		event.preventDefault();
+		if(token){
+			location.href=`/perfil?token=${token}`
+		} else {
+			alert('Debes ingresar tus credenciales')
+		}
+	});
+	linkAdmin.addEventListener('click', (event)=>{
+		event.preventDefault();
+		if(token){
+			location.href=`administrar?token=${token}`
+		} else {
+			alert('No tienes los permisos necesarios para administrar Bootcamps')
+		}
+	})
+</script>

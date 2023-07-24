@@ -1,0 +1,62 @@
+<div class='bg-white py-24 sm:py-32'>
+	<div class='mx-auto max-w-7xl px-6 lg:px-8'>
+		<div class='mx-auto max-w-2xl sm:text-center'>
+			<h2
+				class='lg:text-6xl font-bold tracking-tight text-gray-900 text-4xl'
+			>Listado de Bootcamps</h2>
+			<p class='mt-6 text-lg leading-8 text-gray-600'>Encontrarás los distintos
+				cursos, su descripción y cantidad de módulos de clases para cada uno.</p>
+		</div>
+		{{#each bootcamps}}
+			<div
+				class='h-auto mx-auto mt-4 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none hover:shadow-lg'
+			>
+				<div class='p-8 sm:p-10 lg:flex-auto'>
+					<h3
+						class='text-2xl font-bold tracking-tight text-gray-900'
+					>{{this.dataValues.title}}</h3>
+					<p
+						class='mt-6 text-base leading-7 text-gray-600'
+					>{{this.dataValues.description}}</p>
+					<div class='mt-10 flex items-center gap-x-4'>
+						<h4
+							class='flex-none text-sm font-semibold leading-6 text-indigo-600'
+						>Qué incluye el curso</h4>
+						<div class='h-px flex-auto bg-gray-100'></div>
+					</div>
+					<ul
+						role='list'
+						class='mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6'
+					>
+						<li class='flex gap-x-3'>
+							<svg
+								class='h-6 w-5 flex-none text-indigo-600'
+								viewBox='0 0 20 20'
+								fill='currentColor'
+								aria-hidden='true'
+							>
+								<path
+									fill-rule='evenodd'
+									d='M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z'
+									clip-rule='evenodd'
+								/>
+							</svg>
+							{{this.dataValues.cue}}
+							Módulos de clases
+						</li>
+
+					</ul>
+					
+				</div>
+				<div class='mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:min-h-56'>
+					<div
+						class='rounded-2xl bg-gray-50 text-center ring-1 ring-inset ring-gray-900/5'
+					> 
+					<div class="h-40 w-full lg:h-full bg-bootcamp bg-contain bg-no-repeat bg-top sm:bg-center lg:bg-cover p-2"></div>
+						
+					</div>
+				</div>
+			</div>
+		{{/each}}
+	</div>
+</div>

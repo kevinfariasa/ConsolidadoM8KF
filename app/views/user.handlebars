@@ -1,0 +1,125 @@
+<section class='text-gray-800 py-24'>
+	<div class='container mx-auto flex flex-col justify-center'>
+		<div class='text-start'>
+			<h2
+				class='lg:text-6xl font-bold my-3 tracking-tight text-gray-800 text-4xl'
+			>Información del Usuario</h2>
+			<h2 class='text-lg'>Estudiante:
+				<span class='tracking-widest text-xl font-bold'>{{user.dataValues.firstName}}
+					{{user.dataValues.lastName}}</span>
+			</h2>
+			<h2 class='text-lg'>Contacto:
+				<span class='tracking-widest text-xl font-bold'>
+					{{user.dataValues.email}}</span>
+			</h2>
+			<p class='my-6 text-lg leading-8 text-gray-600'>Información sobre el
+				estudiante seleccionado.
+				<br />
+				Se encontrarán datos personales y los cursos asociados a la persona.
+				<br />
+				Haz click en el botón de acción para ver mas detalles del respectivo
+				curso.
+			</p>
+
+		</div>
+		<!-- Table -->
+		{{#if user.bootcamp}}
+			<div
+				class='container mx-auto mt-16 bg-white shadow-lg rounded-sm border border-gray-200'
+			>
+
+				<div class='p-3'>
+					<div class=''>
+						<table class='w-full'>
+							<thead
+								class='text-xs font-semibold uppercase text-gray-400 bg-gray-50'
+							>
+								<tr>
+									<th class='p-2 whitespace-nowrap'>
+										<div class='text-left'>ID</div>
+									</th>
+									<th class='p-2 whitespace-nowrap'>
+										<div class='text-left'>
+											<p class='text-left'>Curso</p>
+										</div>
+									</th>
+
+									<th class='p-2 whitespace-nowrap'>
+										<div class='text-left'>Acción</div>
+									</th>
+
+								</tr>
+							</thead>
+							<tbody class='text-sm divide-y divide-gray-100'>
+								{{#each user.bootcamp}}
+
+									<tr class='hover:bg-slate-100'>
+										<td class='p-2 whitespace-nowrap'>
+											<div class='text-left'>{{this.dataValues.id}}</div>
+										</td>
+										<td class='p-2 whitespace-nowrap'>
+											<div class='flex items-center'>
+
+												<div
+													class='font-medium text-gray-800'
+												>{{this.dataValues.title}}
+												</div>
+											</div>
+										</td>
+
+										<td class='p-2 whitespace-nowrap'>
+											<div class='text-left'><button type="button"
+													class='px-6 py-2 m-1 text-white font-normal transition-colors duration-200 transform bg-gray-400 rounded-md hover:bg-gray-200 hover:text-gray-800 focus:outline-none focus:bg-gray-400'
+													onclick="checkBootcamp({{this.dataValues.id}})"
+												>Ver Curso</button></div>
+										</td>
+									</tr>
+								{{/each}}
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		{{else}}
+			<div class='shadow-xl bg-slate-50'>
+
+				<section class='container mx-auto'>
+
+					<div
+						class='flex flex-col px-6 mx-auto lg:flex-row lg:justify-center lg:items-center'
+					>
+
+						<div class=''>
+							<div class='p-8'>
+								<h1
+									class='text-3xl font-medium tracking-wide text-gray-800 lg:text-5xl text-center'
+								>
+									Usuario sin cursos
+								</h1>
+
+								<div class='text-center my-10'>
+
+									<a
+										type='button'
+										class='px-10 py-4 rounded-md text-white font-medium transition-colors duration-600 transform bg-emerald-500 hover:bg-sky-500 focus:outline-none focus:bg-gray-400'
+										href='/'
+									>
+										Volver al Inicio
+									</a>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</section>
+			</div>
+		{{/if}}
+	</div>
+</section>
+<script>
+	const checkBootcamp = (id)=>{
+		location.href=`/bootcamp/id/${id}?token=${token}`
+	}
+</script>

@@ -1,0 +1,115 @@
+<section class='text-gray-800 py-24'>
+	{{#if users}}
+	<div class='container mx-auto flex flex-col justify-center'>
+		<div class='text-start'>
+
+			<h2
+				class='lg:text-6xl font-bold my-3 tracking-tight text-gray-800 text-4xl'
+			>Listado de Estudiantes Inscritos</h2>
+			<p class='my-6 text-lg leading-8 text-gray-600'>Listado de todos los
+				estudiantes registrados en la institución.
+				<br />
+				Haz click en el botón de acción para obtener mas información del
+				estudiante.
+			</p>
+		</div>
+
+		<!-- Table -->
+		<div
+			class='container mx-auto mt-16 bg-white shadow-lg rounded-sm border border-gray-200'
+		>
+
+			<div class='p-3'>
+				<div class=''>
+					<table class='w-full'>
+						<thead
+							class='text-xs font-semibold uppercase text-gray-400 bg-gray-50'
+						>
+							<tr>
+								<th class='p-2 whitespace-nowrap'>
+									<div class='text-left'>ID</div>
+								</th>
+								<th class='p-2 whitespace-nowrap'>
+									<div class='text-left'>
+										<p class='text-left'>Nombre</p>
+									</div>
+								</th>
+								<th class='p-2 whitespace-nowrap'>
+									<div class='text-left'>
+										<p class='text-left'>Apellido</p>
+									</div>
+								</th>
+								<th class='p-2 whitespace-nowrap'>
+									<div class='text-left'>Email</div>
+								</th>
+								<th class='p-2 whitespace-nowrap'>
+									<div class='text-left'>Inscrito en:</div>
+								</th>
+								<th class='p-2 whitespace-nowrap'>
+									<div class='text-left'>Acción</div>
+								</th>
+
+							</tr>
+						</thead>
+						<tbody class='text-sm divide-y divide-gray-100'>
+							{{#each users}}
+
+								<tr class='hover:bg-slate-100'>
+									<td class='p-2 whitespace-nowrap'>
+										<div class='text-left'>{{this.dataValues.id}}</div>
+									</td>
+									<td class='p-2 whitespace-nowrap'>
+										<div class='flex items-center'>
+
+											<div
+												class='font-medium text-gray-800'
+											>{{this.dataValues.firstName}}
+											</div>
+										</div>
+									</td>
+									<td class='p-2 whitespace-nowrap'>
+										<div class='flex items-center'>
+
+											<div class='font-medium text-gray-800'>
+												{{this.dataValues.lastName}}</div>
+										</div>
+									</td>
+									<td class='p-2 whitespace-nowrap'>
+										<div class='text-left'>{{this.dataValues.email}}</div>
+									</td>
+									<td class='p-2 whitespace-nowrap'>
+										<div class='text-left'>
+											{{#each this.dataValues.bootcamp}}
+												<p>{{this.dataValues.title}} | </p>
+											{{/each}}
+										</div>
+									</td>
+									<td class='p-2 whitespace-nowrap'>
+										<div class='text-left'><a
+												class='px-6 py-2 m-1 text-white font-normal transition-colors duration-200 transform bg-gray-400 rounded-md hover:bg-gray-200 hover:text-gray-800 focus:outline-none focus:bg-gray-400'
+												href='/user/id/{{this.dataValues.id}}'
+											>Ver Usuario</a></div>
+									</td>
+								</tr>
+							{{/each}}
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{else}}
+	<div class='container mx-auto flex flex-col justify-center'>
+		<div class='text-start'>
+
+				<h2
+					class='lg:text-6xl font-bold my-3 tracking-tight text-gray-800 text-4xl'
+				>No hay Estudiantes Inscritos</h2>
+				
+			</div>
+	</div>
+	{{/if}}
+	
+
+</section>
